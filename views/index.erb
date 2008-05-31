@@ -1,0 +1,33 @@
+<form method="POST">
+	<p>
+		<label for="course_select">Course</label>
+		<select id="course_select" name="course_select">
+			<option value=""></option>
+			<% for course in @courses %>
+				<option value="<%= course.name %>"><%= course.name %></option>
+			<% end %>
+		</select>
+		or a new one <input id="course" type="text" name="course" />
+	</p>
+	<p><label for="course">Score</label><input id="score" type="text" name="score" /></p>
+	<p><input type="submit" value="Save">
+</form>
+
+<h3>Past Scores</h3>
+<table>
+<% for score in @scores %>
+	<tr>
+		<td><%= score.created_at.strftime("%m/%d/%Y") %></td>
+		<td><a href="/course/<%= score.course.id %>"><%= score.course.name %></a></td>
+		<td><%= score.score %></td>
+	</tr>
+<% end %>
+</table>
+
+<h3>Stats</h3>
+<table>
+	<tr>
+		<td>Average Score</td>
+		<td><%= @average_score %></td>
+	</tr>
+</table>

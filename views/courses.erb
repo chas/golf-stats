@@ -1,0 +1,15 @@
+<h2>Courses</h2>
+<table>
+	<tr>
+		<td>Course</td>
+		<td>Times Played</td>		
+		<td>Edit</td>		
+	</tr>
+<% for course in @courses %>
+	<tr>
+		<td><%= "<a href=\"/course/#{course.id}\">#{course.name}</a>" %></td>
+		<td><%= course.scores.count %></td>
+		<td><%= "<a href=\"/course/#{course.id}\">Edit</a>" %></td>
+	</tr>
+<% end %>
+</table>

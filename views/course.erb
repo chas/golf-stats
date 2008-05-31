@@ -1,0 +1,36 @@
+<h2>Course</h2>
+<h3><%= @course.name %></h3>
+		<p><%= "<a href=\"/course/#{@course.id}\">#{@course.name}</a>" %></p>
+		<p>Times Played: <%= @course.scores.count %></p>
+		<p>Average Score: <%= @course.scores.average(:score) %></p>
+
+<h4>Past Scores</h4>
+<table>
+		<tr>
+			<td>Date</td>
+			<td>Score</td>
+		</tr>
+	<% for score in @course.scores %>
+		<tr>
+			<td><%= score.created_at.strftime("%m/%d/%Y") %></td>
+			<td><%= score.score %></td>
+		</tr>
+	<% end %>
+</table>
+	
+
+<h4>Edit</h4>
+<form method="POST" action="/course/<%= @course.id %>">
+	<input type="hidden" name="_method" value="PUT">
+	<p>
+		<label for="course_select">Course</label>
+		<input id="course" type="text" name="name" value="<%= @course.name %> "/>
+	</p>
+	<p><input type="submit" value="Save">
+</form>
+
+<h4>or Delete</h4>
+<form method="POST" action="/course/<%= @course.id %>">
+	<input type="hidden" name="_method" value="DELETE">
+	<p><input type="submit" value="Completely Delete <%= @course.name %> from the face of golf-dom">
+</form>
