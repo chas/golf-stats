@@ -35,11 +35,14 @@ end
 
 class Score < ActiveRecord::Base
   belongs_to :course
-  
 end
 
 class Course < ActiveRecord::Base
   has_many :scores, :dependent => :destroy
+end
+
+class User < ActiveRecord::Base
+  has_many :courses, :dependent => :destroy
 end
 
 
