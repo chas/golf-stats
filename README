@@ -1,0 +1,3 @@
+This is a Sinatra app using sqlite3 for the database. I snarfed some code samples from Erik Kastner after seeing his laid-back presentation at RailsConf '08.
+
+This is a microapp to let me record my horrendous golf scores from my phone while I'm on the golf course.
